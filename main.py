@@ -1,8 +1,6 @@
 import PySimpleGUI as sg
 import random
 
-screen_size = sg.Window.get_screen_size()
-
 class Comment():
     def __init__(self, text):
         self.id = None
@@ -10,17 +8,20 @@ class Comment():
 
 
 class Screen():
-    def __init__(self, graph_elem):
+    def __init__(self, graph_elem, screen_size):
         self.graph_elem = graph_elem
+        self.screen_size = screen_size
         self.comments_list = []
 
     def draw_comments(self, text):
         comment = Comment(text)
         self.comments_list.append(comment)
-        comment.id = self.graph_elem.draw_text(text, location=(screen_size[0], random.randint(0, screen_size[1])), color="white", font=("meiryo", 24))
+        comment.id = self.graph_elem.draw_text(text, location=(self.screen_size[0], random.randint(0, self.screen_size[1])), color="white", font=("meiryo", 24))
 
 
 def main():
+    screen_size = sg.Window.get_screen_size()
+
     graph_elem = sg.Graph(canvas_size=screen_size, graph_bottom_left=(0, screen_size[1]), graph_top_right=(screen_size[0], 0), background_color="green")
     layout1 = [[graph_elem]]
     window1 = sg.Window("Flowing Comments", layout1, location=(0, 0), keep_on_top=True, element_padding=(0, 0), margins=(0, 0), no_titlebar=True, finalize=True, transparent_color="green")
@@ -31,7 +32,7 @@ def main():
     ]
     window2 = sg.Window("controller", layout2, keep_on_top=True, grab_anywhere=True, no_titlebar=True, finalize=True)
 
-    screen = Screen(graph_elem)
+    screen = Screen(graph_elem, screen_size)
 
     while True:
         window, event, value = sg.read_all_windows(timeout=10)

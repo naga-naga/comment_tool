@@ -27,7 +27,7 @@ def main():
     window1 = sg.Window("Flowing Comments", layout1, location=(0, 0), keep_on_top=True, element_padding=(0, 0), margins=(0, 0), no_titlebar=True, finalize=True, transparent_color="green")
 
     layout2 = [
-        [sg.Text("コメント"), sg.Input(key="-INPUT-"), sg.Button("Send")],
+        [sg.Text("コメント"), sg.Input(key="-INPUT-", do_not_clear=False), sg.Button("Send", bind_return_key=True)],
         [sg.Button("Exit")],
     ]
     window2 = sg.Window("controller", layout2, keep_on_top=True, grab_anywhere=True, no_titlebar=True, finalize=True)

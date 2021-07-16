@@ -21,7 +21,7 @@ class Screen():
 
 
 def main():
-    graph_elem = sg.Graph(canvas_size=screen_size, graph_bottom_left=(0, screen_size[1]), graph_top_right=(screen_size[0], 0), key="-GRAPH-", background_color="green")
+    graph_elem = sg.Graph(canvas_size=screen_size, graph_bottom_left=(0, screen_size[1]), graph_top_right=(screen_size[0], 0), background_color="green")
     layout1 = [[graph_elem]]
     window1 = sg.Window("Flowing Comments", layout1, location=(0, 0), keep_on_top=True, element_padding=(0, 0), margins=(0, 0), no_titlebar=True, finalize=True, transparent_color="green")
 

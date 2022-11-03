@@ -1,4 +1,4 @@
-# flowing_comments
+# comment_tool
 画面に某動画サイトのようにコメントを流すツール
 
 ## 使用例
